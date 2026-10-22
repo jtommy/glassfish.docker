@@ -22,6 +22,10 @@ ENV GLASSFISH_DOWNLOAD_SHA512=@embedded.sha512@ \
     GLASSFISH_VERSION=@glassfish.version@ \
     PATH_GF_JAR=${PATH_GF_HOME}/glassfish-embedded-all.jar
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl gnupg \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN true \
     && set -x \
     && mkdir -p "${PATH_GF_HOME}" \
